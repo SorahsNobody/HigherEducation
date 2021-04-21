@@ -1,7 +1,12 @@
-data class Course(val dep: String, val num: Int, val seats: Int) {
+data class Course(val dep: String, val num: Int, val seats: Int, val credits: Int) {
+    //String formatting seen here, akin to what we've seen in C
     private val courseDes = "$dep $num"
-    var grades: Set<Grade> = emptySet()
 
+    var grades: Set<Grade> = emptySet()
+    /**
+     * addGrade()
+     * will add the given grade into the array of grades
+     */
     fun addGrade(grade: Grade){
         if(!grades.isNullOrEmpty()){
             grades = grades.plus(grade)
@@ -9,8 +14,12 @@ data class Course(val dep: String, val num: Int, val seats: Int) {
         else
             grades = setOf(grade)
     }
-    var students: Set<Student> = emptySet()
 
+    var students: Set<Student> = emptySet()
+    /**
+     * addStudent()
+     * will add the given student into the array of students
+     */
     fun addStudent(s: Student){
         if(!students.isNullOrEmpty()){
             students = students.plus(s)
@@ -18,6 +27,7 @@ data class Course(val dep: String, val num: Int, val seats: Int) {
         else
             students = setOf(s)
     }
+
     override fun toString(): String{
         var s = "$courseDes:\n"
         for(student in students){
