@@ -1,5 +1,5 @@
-data class Course(val dep: String, val num: Int) {
-    val courseDes = dep + num
+data class Course(val dep: String, val num: Int, val seats: Int) {
+    private val courseDes = "$dep $num"
     var grades: Set<Grade> = emptySet()
 
     fun addGrade(grade: Grade){
@@ -19,7 +19,7 @@ data class Course(val dep: String, val num: Int) {
             students = setOf(s)
     }
     override fun toString(): String{
-        var s = "$dep$num:\n"
+        var s = "$courseDes:\n"
         for(student in students){
             for(g in grades)
                 if(g.student == student) {
